@@ -9,3 +9,7 @@
 2024-01-16 - ClickUp - Changed sprint length to 2 weeks - Better alignment with stakeholder reviews
 2024-01-17 - Meeting - Delayed feature X to next release - Focus resources on core functionality
 -->
+
+---
+
+*Template for capturing scattered stakeholder decisions*

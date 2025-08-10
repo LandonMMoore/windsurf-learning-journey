@@ -1,0 +1,62 @@
+# Mac system files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Windsurf/VSCode specific
+.vscode/
+*.code-workspace
+
+# Temporary files
+*.tmp
+*.temp
+*~
+*.swp
+*.swo
+
+# Log files
+*.log
+logs/
+
+# Node modules (if using Node.js)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python (if using Python)
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.env
+
+# General backup files
+*.bak
+*.backup
+*.old
+
+# OS generated files
+Icon?
+.DocumentRevisions-V100
+.fseventsd
+.TemporaryItems
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# IDE files
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Personal notes that shouldn't be shared
+private-notes.md
+personal-*.md
+scratch.md

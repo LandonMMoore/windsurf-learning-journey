@@ -48,13 +48,6 @@
 - Status updates sync across team in < 30 seconds
 - 99.9% uptime during business hours
 
-## Timeline
-- Design & Planning: 2 weeks
-- Development: 4 weeks
-- Testing & Launch: 1 week
+---
 
-## Dependencies
-- Design system components
-- User authentication service
-- Real-time messaging infrastructure
-- Integration with calendar system for scheduling
+*Example PRD created during Week 1 Git learning*

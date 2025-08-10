@@ -19,3 +19,7 @@
 - Completed:
 - Tomorrow:
 - Blockers:
+
+---
+
+*Template for daily PM workflow aggregation*
