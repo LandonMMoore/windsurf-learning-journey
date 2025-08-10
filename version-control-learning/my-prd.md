@@ -57,3 +57,4 @@
 - Design system components
 - User authentication service
 - Real-time messaging infrastructure
+- Integration with calendar system for scheduling
