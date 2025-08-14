@@ -17,11 +17,9 @@ Each repository class is initialized with a `session_factory`, which is used to 
 This section provides a detailed description of each file in the `repository` module.
 
 ### `__init__.py`
-
 This file is empty and serves to mark the `repository` directory as a Python package.
 
 ### `analytics_repository.py`
-
 This file contains the `AnalyticsRepository` class, which is responsible for all database operations related to analytics.
 
 **`AnalyticsRepository` Class**
@@ -60,7 +58,6 @@ This file contains the `AnalyticsRepository` class, which is responsible for all
 | `clear_old_recommendations` | DEPRECATED - Use clear_agent_recommendations instead. | `agent_id: str`, `department: str = None` | `None` |
 
 ### `app_repository.py`
-
 This file contains the `AppRepository` class, which is responsible for all database operations related to apps.
 
 **`AppRepository` Class**
@@ -79,7 +76,6 @@ This file contains the `AppRepository` class, which is responsible for all datab
 | `check_app_initialization` | Check if an app is initialized (has an entry in AgentState). | `app_id` | `dict` |
 
 ### `auth_repository.py`
-
 This file contains the `AuthRepository` class, which is responsible for all database operations related to authentication.
 
 **`AuthRepository` Class**
@@ -95,7 +91,6 @@ This file contains the `AuthRepository` class, which is responsible for all data
 | `store_token_data` | Store token data in the database. | `access_token: str`, `refresh_token: str`, `token_type: str`, `expire_time: float`, `user_id: str` | `None` |
 
 ### `container_repository.py`
-
 This file contains the `ContainerRepository` class, which is responsible for all database operations related to app containers.
 
 **`ContainerRepository` Class**
@@ -110,7 +105,6 @@ This file contains the `ContainerRepository` class, which is responsible for all
 | `delete_all_containers` | Delete all containers for an app. | `app_id` | `int` |
 
 ### `datasource_repository.py`
-
 This file contains the `DataSourceRepository` class, which is responsible for all database operations related to app data sources.
 
 **`DataSourceRepository` Class**
@@ -126,7 +120,6 @@ This file contains the `DataSourceRepository` class, which is responsible for al
 | `delete_all_data_sources` | Delete all data sources for an app. | `app_id` | `int` |
 
 ### `document_repository.py`
-
 This file contains the `DocumentRepository` class, which is responsible for all database operations related to app documents.
 
 **`DocumentRepository` Class**
@@ -141,7 +134,6 @@ This file contains the `DocumentRepository` class, which is responsible for all 
 | `delete_all_documents` | Delete all documents for an app. | `app_id` | `int` |
 
 ### `instruction_repository.py`
-
 This file contains the `InstructionRepository` class, which is responsible for all database operations related to app instructions.
 
 **`InstructionRepository` Class**
@@ -154,7 +146,6 @@ This file contains the `InstructionRepository` class, which is responsible for a
 | `delete_instruction` | Delete an instruction by app ID. | `app_id` | `bool` |
 
 ### `localdocs_repository.py`
-
 This file contains the `LocalFileRepository` class, which is responsible for all database operations related to local files.
 
 **`LocalFileRepository` Class**
@@ -178,7 +169,6 @@ This file contains the `LocalFileRepository` class, which is responsible for all
 | `restore_file` | Restore a soft-deleted file. | `app_id`, `file_id` | `bool` |
 
 ### `publish_app_repository.py`
-
 This file contains the `PublishedAppRepository` class, which is responsible for all database operations related to published apps.
 
 **`PublishedAppRepository` Class**
@@ -194,7 +184,6 @@ This file contains the `PublishedAppRepository` class, which is responsible for 
 | `unpublish_app` | Unpublish an app. | `app_id` | `bool` |
 
 ### `sharepoint_repository.py`
-
 This file contains the `SharePointRepository` class, which is responsible for all database operations related to SharePoint.
 
 **`SharePointRepository` Class**
@@ -205,7 +194,6 @@ This file contains the `SharePointRepository` class, which is responsible for al
 | `get_user_token` | Get OAuth token from database using existing utility function. | `user_id: str`, `token_type: str = "sharepoint"` | `Dict[str, Any]` |
 
 ### `tool_repository.py`
-
 This file contains the `ToolRepository` class, which is responsible for all database operations related to app tools.
 
 **`ToolRepository` Class**
@@ -220,7 +208,6 @@ This file contains the `ToolRepository` class, which is responsible for all data
 | `delete_all_tools` | Delete all tools for an app. | `app_id` | `int` |
 
 ### `topic_repository.py`
-
 This file contains the `TopicRepository` class, which is responsible for all database operations related to topics.
 
 **`TopicRepository` Class**
@@ -246,7 +233,6 @@ This file contains the `TopicRepository` class, which is responsible for all dat
 | `migrate_topics_to_growth_status` | One-time migration to update all existing topics to use growth-based status. | | `Dict` |
 
 ### `trigger_repository.py`
-
 This file contains the `TriggerRepository` class, which is responsible for all database operations related to app triggers.
 
 **`TriggerRepository` Class**
@@ -259,7 +245,6 @@ This file contains the `TriggerRepository` class, which is responsible for all d
 | `delete_trigger` | Delete a trigger by app ID. | `app_id` | `bool` |
 
 ### `workforce_agents_repository.py`
-
 This file contains the `WorkforceAgentRepository` class, which is responsible for all database operations related to workforce agents.
 
 **`WorkforceAgentRepository` Class**
