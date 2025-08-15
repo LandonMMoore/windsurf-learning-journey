@@ -290,7 +290,84 @@ PROGRAM_CODE_SECURITY = {
 }
 ```
 
-### 5.3 Signature Hierarchy Security (Updated with Stakeholder Feedback)
+### 5.3 FAHP/FAR Part 31 Compliance Security
+**Federal Requirement**: Secure cost principles validation and IDCR compliance
+
+#### FAHP (Federal-Aid Highway Program) Security Requirements:
+```python
+FAHP_SECURITY_CONTROLS = {
+    'cfda_validation': {
+        'requirement': '2 CFR 200.210 - CFDA number validation',
+        'implementation': 'Encrypted CFDA lookup with audit trail',
+        'security': 'Certificate-based FHWA API authentication'
+    },
+    'indirect_cost_rate': {
+        'requirement': '2 CFR 200.414 - Indirect cost rate validation',
+        'implementation': 'Secure NICRA rate retrieval from SharePoint ETL',
+        'security': 'Multi-factor authentication for rate modifications'
+    },
+    'performance_reporting': {
+        'requirement': '2 CFR 200.301 - Performance measurement',
+        'implementation': 'Encrypted performance data transmission',
+        'security': 'Role-based access to performance metrics'
+    },
+    'federal_award_data': {
+        'requirement': '2 CFR 200.210 - 15 uniform data sets',
+        'implementation': 'Secure data validation against FMIS 5.0',
+        'security': 'End-to-end encryption for award data'
+    }
+}
+```
+
+#### FAR Part 31 Cost Principles Security:
+```python
+FAR_PART31_SECURITY = {
+    'cost_reasonableness': {
+        'requirement': 'FAR 31.201-3 - Cost reasonableness validation',
+        'implementation': 'Automated cost comparison with industry standards',
+        'security': 'Encrypted cost data with access controls'
+    },
+    'cost_allocability': {
+        'requirement': 'FAR 31.201-4 - Cost allocation validation',
+        'implementation': 'Secure direct/indirect cost classification',
+        'security': 'Audit trail for all cost allocations'
+    },
+    'indirect_cost_allocation': {
+        'requirement': 'FAR 31.203 - Indirect cost allocation',
+        'implementation': 'Secure G&A cost base calculations',
+        'security': 'Cryptographic validation of allocation bases'
+    },
+    'unallowable_costs': {
+        'requirement': 'FAR 31.205 - Selected costs validation',
+        'implementation': 'Automated unallowable cost detection',
+        'security': 'Secure flagging and reporting system'
+    }
+}
+```
+
+#### Multi-System Validation Security:
+```python
+COMPLIANCE_VALIDATION_SECURITY = {
+    'idcr_cross_validation': {
+        'sources': ['SharePoint_ETL', 'FMIS_60_Report', 'FMIS_37_Report', 'M60_Tables'],
+        'security': 'Multi-source data integrity validation',
+        'encryption': 'AES-256 for all validation data',
+        'audit': 'Complete validation trail with timestamps'
+    },
+    'fund_availability': {
+        'validation': 'Real-time fund balance verification',
+        'security': 'Secure API calls to FMIS systems',
+        'compliance': '2 CFR 200 fund availability requirements'
+    },
+    'program_code_security': {
+        'validation': 'M60 table cross-reference with CFDA codes',
+        'security': 'Certificate-based FHWA service authentication',
+        'compliance': 'FAR Part 31 cost principle adherence'
+    }
+}
+```
+
+### 5.4 Signature Hierarchy Security (Updated with Stakeholder Feedback)
 **Federal Requirement**: Secure FMIS XML signature mapping with role-based hierarchy
 
 #### Confirmed Signature Security (6 Total Signatures):

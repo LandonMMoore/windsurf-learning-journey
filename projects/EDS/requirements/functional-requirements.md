@@ -188,9 +188,19 @@ Master Projects → Projects → Tasks/Subtasks → Transactions
 - Store program codes and funding data
 - Generate FMIS 60 report (available funds by program code)
 - Generate FMIS 37 report (for validation)
+- **FAHP/FAR Part 31 Compliance Requirements**:
+  - 2 CFR 200.210: 15 uniform data sets validation (CFDA, performance end date, indirect cost rate)
+  - FAR 31.201-3: Cost reasonableness validation against prudent person standard
+  - FAR 31.203: Indirect cost allocation with logical cost groupings
+  - M60 table integration for program code cross-validation
 
 #### DIFS (Financial information system for DC funds)
 - Source of DC contribution data
+- **IDCR Validation Requirements**:
+  - NICRA rate validation via SharePoint ETL
+  - Fund availability cross-validation with FMIS 60 reports
+  - Real-time data synchronization for compliance checks
+  - FAR Part 31 cost allocability validation
 - Process DC matching funds
 
 ## 4. Performance Requirements

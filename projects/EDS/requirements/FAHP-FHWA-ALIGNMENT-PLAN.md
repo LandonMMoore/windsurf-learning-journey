@@ -58,6 +58,28 @@ This document provides a comprehensive alignment plan for the EDS system to achi
 **Federal Requirement**: Auto-fetch valid codes from FMIS/M60, validate against project type  
 **Current EDS Status**: ⚠️ **PARTIAL** - FHWA service exists, M60 validation missing
 
+**FAHP/FAR Part 31 Compliance Requirements**:
+```python
+# Federal Compliance Requirements:
+├── 2 CFR 200.210 Requirements
+│   ├── CFDA number validation (15 uniform data sets)
+│   ├── Performance end date tracking
+│   ├── Indirect cost rate validation
+│   └── Federal award identification
+├── FAR 31.201-3 Cost Reasonableness
+│   ├── Prudent person standard validation
+│   ├── Competitive business practice checks
+│   └── Burden of proof documentation
+├── FAR 31.203 Indirect Cost Allocation
+│   ├── Logical cost groupings validation
+│   ├── Common allocation base requirements
+│   └── Pro rata share calculations
+└── M60 Table Integration
+    ├── Program code cross-validation
+    ├── Federal share percentage limits
+    └── FMIS 37/60 report reconciliation
+```
+
 **Implementation Requirements**:
 ```python
 # Required Implementation Components:
@@ -65,23 +87,30 @@ This document provides a comprehensive alignment plan for the EDS system to achi
 │   ├── Valid program code retrieval
 │   ├── Project type mapping
 │   ├── Federal share percentage validation
-│   └── Real-time code verification
-├── Validation Logic
-│   ├── Program code vs. project type matching
-│   ├── Federal share % validation (90/10, 80/20, etc.)
-│   ├── Multi-funding scenario handling
-│   └── STIP reference validation
-└── Workflow Integration
-    ├── Trigger stops for mismatches
-    ├── Role-based validation responsibilities
-    └── Escalation procedures
+│   ├── CFDA code cross-validation
+│   └── Real-time validation workflow
+├── FAR Part 31 Validation Engine
+│   ├── Cost reasonableness checks
+│   ├── Allocability validation
+│   ├── Indirect cost allocation rules
+│   └── Unallowable cost detection
+├── FAHP Compliance Module
+│   ├── 2 CFR 200.210 data set validation
+│   ├── Performance reporting requirements
+│   ├── NICRA rate compliance checks
+│   └── Federal award data integrity
+└── Multi-System Cross-Validation
+    ├── FMIS 37 report integration
+    ├── FMIS 60 fund availability checks
+    ├── SharePoint ETL data validation
+    └── Real-time compliance monitoring
 ```
 
 **EDS Implementation Plan**:
-- **Phase 1**: Enhance `FHWAService` with M60 integration
-- **Phase 2**: Create program code validation logic
-- **Phase 3**: Implement federal share percentage checks
-- **Phase 4**: Add workflow trigger stops
+- **Phase 1**: Enhance `FHWAService` with M60 integration and FAR Part 31 validation
+- **Phase 2**: Implement FAHP compliance module with 2 CFR 200 requirements
+- **Phase 3**: Add multi-system cross-validation (FMIS 37/60, SharePoint ETL)
+- **Phase 4**: Deploy real-time compliance monitoring and audit trails
 
 #### **A.3 Comprehensive FAHP Regulation Compliance**
 **Federal Requirement**: Validate all FAHP regulations, not just financial  
@@ -90,11 +119,35 @@ This document provides a comprehensive alignment plan for the EDS system to achi
 **Regulatory Compliance Matrix**:
 | **Regulation** | **Current Status** | **Implementation Needed** |
 |----------------|-------------------|---------------------------|
-| 2 CFR 200 | 70% | Enhanced grant compliance validation |
-| FAR Part 31 | 60% | Cost principles validation |
-| FHWA Program Code Guidance | 30% | M60 table integration |
-| NEPA Compliance | 40% | Environmental date validation |
-| STIP Compliance | 50% | Reference validation system |
+| 2 CFR 200 | 70% | Enhanced grant compliance validation, CFDA validation, 15 uniform data sets |
+| FAR Part 31 | 60% | Cost reasonableness validation, indirect cost allocation, unallowable cost detection |
+| FHWA Program Code Guidance | 30% | M60 table integration, FMIS 37/60 cross-validation |
+| NEPA Compliance | 40% | Environmental date validation, project impact assessment |
+| STIP Compliance | 50% | Reference validation system, transportation plan alignment |
+
+**Detailed FAHP/FAR Validation Requirements**:
+```python
+FAHP_VALIDATION_MATRIX = {
+    '2_cfr_200': {
+        'section_200_210': 'Federal award 15 uniform data sets validation',
+        'section_200_301': 'Performance measurement and reporting',
+        'section_200_414': 'Indirect cost rate validation against NICRA',
+        'implementation': 'Real-time CFDA, performance tracking, NICRA integration'
+    },
+    'far_part_31': {
+        'section_31_201_2': 'Cost allowability determination (reasonable, allocable)',
+        'section_31_201_3': 'Cost reasonableness validation (prudent person standard)',
+        'section_31_201_4': 'Cost allocability to government contracts',
+        'section_31_203': 'Indirect cost allocation and G&A calculations',
+        'implementation': 'Automated cost validation, allocation base verification'
+    },
+    'cross_validation': {
+        'idcr_validation': 'Multi-source validation: SharePoint ETL + FMIS 37/60 + M60',
+        'fund_availability': 'Real-time fund balance checks against program codes',
+        'compliance_monitoring': 'Continuous validation across all federal requirements'
+    }
+}
+```
 
 **Implementation Requirements**:
 ```python
