@@ -16,16 +16,17 @@ This document reflects the **corrected PAR workflow** based on stakeholder feedb
 
 ## 📋 **CORRECTED PAR WORKFLOW PHASES**
 
-### **Phase 1: Internal EDS Preparation (Steps 1-4)**
+### **Phase 1: Internal EDS Preparation (Steps 1-3)**
 *All actions happen within EDS before any external system involvement*
 
 #### **Step 1: PAR Creation**
-**Role**: PM/Engineer (RAD)  
+**Role**: PM/Engineer (RAD Team - Interchangeable Roles)  
 **Location**: EDS  
 **Actions**: 
 - Creates initial ePAR for existing projects
 - Enters project details, selects packet type
 - **Confirmed**: All PAR types (Federal, Local Capital, FMIS) start here
+- **Note**: PM and Engineer are interchangeable roles under RAD team
 
 **EDS System Actions**:
 - Validate project exists in DIFS cache from ETL sync
@@ -34,18 +35,20 @@ This document reflects the **corrected PAR workflow** based on stakeholder feedb
 
 **Integration**: DIFS ETL (read-only)
 
-#### **Step 2: Engineering Review** *(NEW - Added from feedback)*
-**Role**: Engineering Team  
+#### **Step 2: RAD Team Review** *(Updated - PM/Engineer Interchangeable)*
+**Role**: Project Manager/Engineer (RAD Team)  
 **Location**: EDS  
 **Actions**: 
-- Reviews scope alignment with DDOT goals
-- **Confirmed**: "Engineering reviews scope & passes to Finance"
-- Ensures project scope aligns with intended purpose
+- Reviews PAR details and project scope
+- **Note**: PM and Engineer roles are interchangeable in DDOT structure
+- Validates project alignment with DDOT objectives
+- Makes corrections as needed before Finance routing
 
 **EDS System Actions**:
-- Display project scope details
-- Capture engineering review and comments
-- Route to Finance upon approval
+- Display comprehensive PAR details for review
+- Allow edits and updates by RAD team members
+- Track all changes with audit trail
+- Route to Finance upon RAD approval
 
 #### **Step 3: Budget Analysis**
 **Role**: Budget Analyst (OCFO)  
@@ -61,7 +64,7 @@ This document reflects the **corrected PAR workflow** based on stakeholder feedb
 - Check fund availability via DIFS ETL data
 - Capture budget analysis
 
-#### **Step 4: Leadership Sign-off**
+#### **Step 3: Leadership Sign-off**
 **Role**: Calvin (EDS Leadership)  
 **Location**: EDS  
 **Actions**: 
@@ -75,15 +78,15 @@ This document reflects the **corrected PAR workflow** based on stakeholder feedb
 
 ---
 
-### **Phase 2: ProTrack+ Workflow Management (Steps 5-8)**
+### **Phase 2: ProTrack+ Workflow Management (Steps 4-7)**
 *PAR is now in ProTrack+, EDS monitors status*
 
-#### **Step 5: ProTrack+ Submission**
-**Role**: System  
-**Location**: ProTrack+  
-**Actions**: 
-- **Confirmed**: "PAR received into ProTrack+ - workflow starts within ProTrack+"
-- PAR enters ProTrack+ workflow system
+#### **Step 4-7: ProTrack+ Processing**
+**Confirmed**: ProTrack+ handles PM/Engineer confirmation, RAD review, and OCFO review independently
+- **Note**: PM and Engineer roles are interchangeable in ProTrack+ as well
+- EDS monitors status via API polling
+- Updates dashboard with current workflow stage
+- Prepares for FMIS submission when ProTrack+ reaches "FHWA" status
 
 **EDS System Actions**:
 - Send PAR data to ProTrack+ via API

@@ -33,9 +33,11 @@ This document provides comprehensive user stories based on the current EDS Pytho
 ## 📋 **EPIC 1: PAR MANAGEMENT AND WORKFLOW (UPDATED WITH STAKEHOLDER FEEDBACK)**
 
 #### Story 1.1: PAR Creation and Initial Setup
-**As a** Project Manager  
+**As a** Project Manager/Engineer (RAD Team)  
 **I want to** create a new PAR for an existing project  
 **So that** I can initiate the budget reallocation or project modification process
+
+**Note**: PM and Engineer roles are interchangeable in DDOT - both are part of RAD team
 
 **Acceptance Criteria:**
 - Select project from DIFS-synced project list
@@ -53,25 +55,25 @@ This document provides comprehensive user stories based on the current EDS Pytho
 # Schema: ParCreate (par_schema.py)
 # Service: ParService.add()
 
-#### Story 1.2: Engineering Review Process (NEW - Stakeholder Confirmed)
-**As an** Engineering Team Member  
-**I want to** review PAR scope alignment with DDOT goals  
-**So that** I can ensure project scope aligns with intended purpose before financial review
+#### Story 1.2: PAR Review and Validation (Updated - PM/Engineer Interchangeable)
+**As a** Project Manager/Engineer (RAD Team)  
+**I want to** review and validate PAR details before submission  
+**So that** I can ensure all project information is accurate before routing to Finance
+
+**Note**: PM and Engineer roles are interchangeable in DDOT structure - both work under RAD team
 
 **Acceptance Criteria:**
-- Review project scope details in EDS
-- Validate scope alignment with DDOT objectives
-- Add engineering review comments
-- Route to Finance upon approval
-- Block progression if scope issues identified
+- Review all PAR details and project scope
+- Validate project alignment with DDOT objectives
+- Make any necessary corrections or updates
+- Submit to Finance/Budget Analysis when ready
+- Maintain audit trail of all changes
 
 **Technical Implementation:**
-- **API Endpoint**: `PUT /api/v1/par/{id}/engineering-review`
-- **Workflow**: Add engineering review step after PAR creation
-- **Database**: Engineering review status and comments
-- **Integration**: Route to budget analysis after approval
-
-**Stakeholder Quote**: "Engineering reviews scope & passes to Finance"
+- **API Endpoint**: `PUT /api/v1/par/{id}/review`
+- **Workflow**: Internal RAD team review before Finance routing
+- **Database**: Review status and change tracking
+- **Integration**: Route to budget analysis after RAD approval
 
 ---
 

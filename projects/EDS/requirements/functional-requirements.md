@@ -22,10 +22,11 @@
 #### Corrected Status Flow (Based on Stakeholder Feedback):
 ```
 Phase 1 - Internal EDS:
-PAR Creation → Engineering Review → Budget Analysis → Leadership Sign-off
+PAR Creation → RAD Team Review → Budget Analysis → Leadership Sign-off
+(Note: PM/Engineer roles are interchangeable under RAD team)
 
 Phase 2 - ProTrack+:
-ProTrack+ Submission → PM Confirmation → RAD Review → OCFO Review
+ProTrack+ Submission → PM/Engineer Confirmation → RAD Review → OCFO Review
 
 Phase 3 - Federal (FMIS):
 FMIS Submission → State Signatures (3) → FHWA Approval → DIFS Update
