@@ -1,0 +1,76 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: dev_postgres
+    environment:
+      POSTGRES_USER: SA
+      POSTGRES_PASSWORD: admin123
+      POSTGRES_DB: postgresql
+    ports:
+      - "1434:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - devnet
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: dev_pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin123
+    ports:
+      - "8080:80"
+    depends_on:
+      - postgres
+    networks:
+      - devnet
+
+  mongodb:
+    image: mongo:7.0
+    container_name: dev_mongodb
+    environment:
+      MONGO_INITDB_DATABASE: EDS
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - devnet
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.12.1
+    container_name: dev_elasticsearch
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ports:
+      - "9200:9200"
+    volumes:
+      - elasticsearch_data:/usr/share/elasticsearch/data
+    networks:
+      - devnet
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.12.1
+    container_name: dev_kibana
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    ports:
+      - "5601:5601"
+    depends_on:
+      - elasticsearch
+    networks:
+      - devnet
+
+volumes:
+  pgdata:
+  elasticsearch_data:
+  mongodb_data:
+
+networks:
+  devnet:
+    driver: bridge

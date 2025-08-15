@@ -1,0 +1,51 @@
+# This pipeline builds the Report migration Celery worker docker container
+
+name: build celery report worker
+
+on:
+  push:
+    branches: ["main", "dev", "refactor/*", "celery-worker-deployment"]
+  pull_request:
+    branches: ["main", "dev", "refactor/*", "celery-worker-deployment"]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+  actions: read
+
+jobs:
+  build-dev:
+    uses: AutoBridgeSystems/infra/.github/workflows/docker.yml@dev
+    if: github.ref == 'refs/heads/dev'
+    with:
+      registry-login-server: ${{ vars.REGISTRY_LOGIN_SERVER_DEV }}
+      registry-username: ${{ vars.REGISTRY_USERNAME_DEV }}
+      image: govt-assist/govt-assist-eds-celery-report
+      docker-file: Dockerfile.celery.report
+    secrets:
+      registry-password: ${{ secrets.REGISTRY_PASSWORD_DEV }}
+
+  build-main:
+    uses: AutoBridgeSystems/infra/.github/workflows/docker.yml@main
+    if: github.ref == 'refs/heads/main'
+    with:
+      registry-login-server: ${{ vars.REGISTRY_LOGIN_SERVER_PROD }}
+      registry-username: ${{ vars.REGISTRY_USERNAME_PROD }}
+      image: govt-assist/govt-assist-eds-celery-report
+      docker-file: Dockerfile.celery.report
+    secrets:
+      registry-password: ${{ secrets.REGISTRY_PASSWORD_PROD }}
+
+  build-refactor:
+    uses: AutoBridgeSystems/infra/.github/workflows/docker.yml@dev
+    if: startsWith(github.ref, 'refs/heads/refactor/')
+    with:
+      registry-login-server: ${{ vars.REGISTRY_LOGIN_SERVER_DEV }}
+      registry-username: ${{ vars.REGISTRY_USERNAME_DEV }}
+      image: govt-assist/govt-assist-eds-celery-report
+      docker-file: Dockerfile.celery.report
+    secrets:
+      registry-password: ${{ secrets.REGISTRY_PASSWORD_DEV }}

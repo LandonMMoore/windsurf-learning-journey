@@ -1,0 +1,44 @@
+# Sample configuration for enabling PR container validation in microservices
+# This file should be placed in the .github/workflows/ directory of each microservice repository
+
+name: PR Container Validation
+
+on:
+  pull_request:
+    branches: ['**']
+    types: [opened, reopened, synchronize]
+
+permissions:
+  id-token: write
+  contents: read
+  actions: read
+
+
+jobs:
+  validate-container:
+    uses: AutoBridgeSystems/infra/.github/workflows/pr-container-validation.yml@dev
+    with:
+      environment: govt-assist-development
+      infra-repo-branch: dev
+      pipeline-repo-branch: main
+      azure-client-id: ${{ vars.AZURE_CLIENT_ID_DEV }}
+      azure-tenant-id: ${{ vars.AZURE_TENANT_ID }}
+      azure-subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+      azure-environment: ${{ vars.AZURE_ENVIRONMENT }}
+      aks-resource-group: rg-govt-assist-dev-eastus2
+      aks-cluster-name: aks-govt-assist-dev-eastus2
+      namespace: pr-validation-dev
+      helm-chart: infra/templates/containers/charts/app
+      override-files: helm/development/govt-assist-eds-api.yaml
+      registry-login-server: ${{ vars.REGISTRY_LOGIN_SERVER_DEV }}
+      registry-username: ${{ vars.REGISTRY_USERNAME_DEV }}
+      image-name: govt-assist/govt-assist-eds-api
+      image-tag: pr-${{ github.event.pull_request.number }}
+      docker-file: Dockerfile
+      docker-context-path: .
+      helm-overrides: |
+        workloadIdentity.clientId:${{ vars.AZURE_WORKLOAD_CLIENT_ID }}
+        image.tag:pr-${{ github.event.pull_request.number }}
+        ingress.enabled: false
+      repo-pat-token: ${{ vars.REPO_PAT_TOKEN_DEV }}
+      registry-password: ${{ vars.REGISTRY_PASSWORD_DEV }}

@@ -1,0 +1,63 @@
+# Byte-compiled / Cached / Virtual Environment
+**/__pycache__/
+*.py[cod]
+*.so
+*.pyd
+*.pyo
+*.pdb
+.Python
+venv/
+.venv/  # Added .venv for Poetry-managed virtual environments
+env/
+.virtualenvs/
+poetry.lock
+# Poetry-specific files
+poetry.toml
+
+# IDE & Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.bak
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+*.log
+
+# Environment & Secrets
+.env
+*.env
+.env.local
+.env.development
+.env.production
+.env.test
+secrets.toml
+
+# FastAPI / Uvicorn log & cache
+instance/
+logs/
+*.db
+*.sqlite3
+
+# Test Coverage / Reports
+htmlcov/
+.coverage
+.cache
+pytest_cache/
+
+# Build / Distribution
+build/
+dist/
+*.egg-info/
+pip-wheel-metadata/
+
+#folder
+data_migrations/
+
+#files
+fetch_secrets.py
+
+#poetry lock
+poetry.lock

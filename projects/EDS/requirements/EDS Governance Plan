@@ -1,0 +1,362 @@
+Here’s the full text of **"VTC\_DDOT\_Governance Plan\_v1.0"** from your uploaded PDF:
+
+---
+
+## EDS Governance Framework – Epar
+
+---
+
+### Government of District Columbia (DC)
+
+**Office of Chief Financial Officer (OCFO)**
+**Electronic Data Sharing (EDS)**
+
+**Electronic Program Action Request Governance Framework**
+
+Governance Created by:
+**Visionary Technology Consultants (VTC)**
+
+---
+
+### APPROVALS
+
+**DC Government Approving Authority:**
+
+| Signature         | Printed Name                       | Date       | Phone Number |
+| ----------------- | ---------------------------------- | ---------- | ------------ |
+| Kathryn Valentine | Kathryn Valentine – Budget Officer | 03/17/2025 | 240-475-4476 |
+
+---
+
+### REVISION HISTORY
+
+| Version | Date       | Organization / Point of Contact | Description of Changes |
+| ------- | ---------- | ------------------------------- | ---------------------- |
+| 1.0     | 02/28/2025 | Micah Coger                     | Baseline Version       |
+
+---
+
+## Agenda: Meeting with Federal Highway Administration (FHWA) on EDS & ePAR Integration
+
+---
+
+## 1. Introduction
+
+### 1.1 Purpose
+
+The purpose of this document is to establish governance, compliance, and security protocols for the EDS ePAR system. The framework ensures adherence to financial regulations, data security policies, and internal role-based access controls to maintain integrity and transparency in financial transactions.
+
+### 1.2 Scope
+
+This document applies to all users and stakeholders accessing the EDS ePAR system within the District Department of Transportation (DDOT). The system is integrated with federal agencies such as FHWA and financial systems like the District Integrated Financial System (DIFS).
+
+### 1.3 Objectives
+
+* Ensure compliance with OMB Circular A-123, 2 CFR 200, and FHWA FMIS standards.
+* Establish role-based access controls using Azure Active Directory.
+* Implement security measures to protect financial data and system integrity.
+* Define automation and data validation protocols for financial transactions.
+* Conduct monthly compliance audits and risk assessments.
+
+---
+
+## 2. Internal Role-Based Access Controls (RBAC)
+
+### 2.1 User Roles & Permissions
+
+Access to the EDS ePAR system is governed by Azure Active Directory (AAD), with defined roles:
+
+| Role              | Access Level | Key Responsibilities                                            |
+| ----------------- | ------------ | --------------------------------------------------------------- |
+| Project Manager   | Limited      | Submit and review PARs, request funding approvals.              |
+| Financial Officer | Full         | Manage budgets, approve financial transactions, allocate funds. |
+| RAD Reviewer      | Limited      | Verify compliance with financial policies, recommend approvals. |
+| OCFO Reviewer     | Full         | Conduct financial audits, final fund allocation.                |
+| FHWA Approver     | Read-Only    | Review funding submissions for federal approval.                |
+
+### 2.2 Authentication & Authorization
+
+* **Federated Identity Provider**: Authentication handled via DDOT’s Federated System.
+* **MFA** mandatory for all financial officers and approvers.
+* Access requests require manager approval and periodic re-certification.
+* External users require pre-approval and AAD verification.
+
+---
+
+## 3. Data Security & Integrity
+
+### 3.1 Encryption & Secure Storage
+
+* **Data-at-rest**: AES-256 encryption.
+* **Data-in-transit**: TLS 1.2/1.3 enforced.
+* All transactions logged for auditability.
+
+### 3.2 Audit Logging & Monitoring
+
+* **Logging Mechanisms**:
+
+  * All user logins, approvals, modifications, allocations, and rejections logged.
+  * Logs are timestamped, immutable, and compliant with federal audits.
+  * Include IP tracking, device fingerprints, session durations.
+* **Storage of Logs**:
+
+  * Cloud repository with AES-256 encryption.
+  * Retention: 7 years.
+  * Restricted access to OCFO auditors, security officers, compliance personnel.
+* **Automated Alerts**:
+
+  * AI-driven anomaly detection for fund changes.
+  * Alerts for unauthorized access, failed logins, unusual transactions.
+  * Automated account lockout on threats.
+* **Compliance KPIs**:
+
+  * Failed login attempts per user.
+  * Average approval time.
+  * PAR rejections due to compliance violations.
+  * Transactions flagged for irregularities.
+  * Policy violations detected.
+  * Audit recommendations implemented.
+
+### 3.3 Incident Response & Breach Notification
+
+* **Reporting Protocol**:
+
+  * Report incidents to OCFO within 24 hours.
+  * Include breach details, impact, and actions taken.
+  * Final breach report due in 48 hours.
+* **Escalation Matrix**:
+
+| Severity | Description                                         | Initial Response                       | Escalation                 |
+| -------- | --------------------------------------------------- | -------------------------------------- | -------------------------- |
+| Low      | Minor incident, no data exposure.                   | Log, notify IT Security.               | None                       |
+| Medium   | Unauthorized access attempt or suspicious activity. | Block access, notify OCFO.             | IT Director                |
+| High     | Confirmed breach of financial data.                 | Isolate systems, forensics.            | CIO & federal partners     |
+| Critical | Widespread breach affecting agencies.               | Emergency response with federal teams. | FHWA, DHS, law enforcement |
+
+* **Annual Penetration Testing**:
+
+  * Scope: Auth, financial transactions, API security.
+  * Methods: Black Box, White Box, Red Team exercises.
+  * Critical/High issues fixed in 30 days; others per policy.
+
+---
+
+## 4. Financial Compliance & Reporting
+
+### 4.1 Regulatory Framework
+
+* **OMB Circular A-123**: Internal controls over reporting, segregation of duties, automated workflows, audits, real-time compliance.
+* **2 CFR 200**: Grant compliance with accountability, reviews, and strict validation checks.
+* **FHWA FMIS**: Standardized reporting, reconciliation, automated fund tracking.
+
+### 4.2 Approval Workflow & Error Handling
+
+1. PAR Submission → Protrack Review → RAD Review → OCFO Review → FHWA Approval → Fund Release.
+2. **Error Handling**:
+
+   * DIFS validation failures auto-reject with error logs.
+   * FHWA rejections require corrections before resubmission.
+   * Escalation to OCFO for unresolved issues.
+
+### 4.3 Monthly Compliance Audits
+
+* Fund allocation reviews per AASHTO guidelines.
+* Random audits of 10% of transactions.
+* Error trend analysis.
+* Fund reconciliation with approved policies.
+* Findings in monthly audit reports with risk categorization.
+
+---
+
+## 5. System Governance & Data Automation
+
+### 5.1 Automated Data Validation
+
+* Duplicate transaction checks.
+* Auto-flagging anomalies.
+
+### 5.2 API & Integration Security
+
+* Secure API protocols for FHWA FMIS, Protrack+, and DIFS.
+* Whitelisted IPs and firewall rules.
+
+---
+
+## 6. Risk Management & Continuous Monitoring
+
+### 6.1 Risk Identification & Mitigation
+
+* Financial fraud risk: AI-based anomaly detection.
+* Unauthorized access: Strict AAD governance and role restrictions.
+
+### 6.2 Real-Time Alerts & Compliance Monitoring
+
+* Automated alerts for irregularities.
+* Quarterly penetration testing & assessments.
+Here’s the full text of **"VTC\_DDOT\_FHWA\_EDS\_Compliance One-Pager\_v1.0"** from your uploaded PDF:
+
+---
+
+## EDS Federal Highway EDS Overview
+
+---
+
+### Government of District Columbia (DC)
+
+**Office of Chief Financial Officer (OCFO)**
+**Electronic Data Sharing (EDS)**
+
+**EDS Compliance One-Pager**
+
+Document Created by:
+**Visionary Technology Consultants (VTC)**
+
+---
+
+### EDS/ePAR Module Implementation Overview for FHWA
+
+**Prepared for:** Dr. Harris, Federal Highway Administration (FHWA)
+**Date:** April 2025
+
+---
+
+## 1. FHWA Stakeholder Roles Required for Implementation
+
+| FHWA Stakeholder Role              | Support Needed                                                                        |
+| ---------------------------------- | ------------------------------------------------------------------------------------- |
+| **FHWA IT System Administrator**   | Coordinate FMIS schema validation, approve API integration, and review XML structure. |
+| **FHWA FMIS Data Compliance Lead** | Validate EDS data mapping to FMIS codes (e.g., M60, FAIN, CFDA).                      |
+| **FMIS Operations Support Team**   | Provide sandbox/test environment access and approve data throughput parameters.       |
+
+---
+
+## 2. Can a Contractor Access FHWA Systems?
+
+**Based on EDS system security design:**
+
+* **Contractor Access to FHWA Systems is Indirect**
+  Contractors do not access FMIS directly. Instead, they interact with EDS, which securely transmits validated XML/JSON data to FMIS.
+
+* **Security Safeguards in Place**
+
+  * TLS 1.2+ encryption
+  * AES-256 encryption at rest
+  * Azure AD role-based access
+  * Contractors can access EDS environments only with agency authorization and do not require direct access to FMIS or internal FHWA systems, in alignment with federal information assurance policy (e.g., FISMA Moderate, NIST 800-171).
+
+---
+
+## 3. State Jurisdiction Ownership & Technology Flexibility
+
+FHWA has provided structured formats and guidance (via FMIS Prep Guide) to allow states to:
+
+* **Control EDS Deployment**: States host their own instances or customize dashboards, funding validation, and project workflows.
+* **Integrate via API & XML Standards**: States can automate data exchanges with FMIS using FHWA’s public schemas.
+* **Enable End-to-End State Oversight**: Through ePAR, states can own the full lifecycle — planning to reimbursement — without FHWA internal systems access.
+
+---
+
+## 4. FMIS 5 Addendum Compliance Points
+
+The EDS module aligns with FMIS 5 system specifications:
+
+* **FAIN Tag Compliance**
+  → EDS ensures 26-character FAIN structure post-approval signature (e.g., `693JJ21800000L230AL0001531`).
+
+* **Required XML Schema Adherence**
+  → Follows `<Projects><Project>...</Project></Projects>` hierarchy including critical tags:
+
+  * `<FederalProjectNumber>`
+  * `<CFDA>`
+  * `<ProgramCode>`
+  * `<FAIN>`
+  * `<ProjectTitle>`
+  * `<ProjectDescription>`
+
+* **Submission Timing Compliance**
+  → FAIN generation aligns with FMIS logic: after division signature but before project approval.
+
+---
+
+## 5. FMIS XML Tags & Code Alignment
+
+The following FMIS XML Tags are used by EDS and align with Federal submission requirements:
+
+| Tag                      | Purpose                                  | Compliance Reference        |
+| ------------------------ | ---------------------------------------- | --------------------------- |
+| `<FAIN>`                 | Federal Award Identification Number      | FMIS Addendum (p.2)         |
+| `<FederalProjectNumber>` | FHWA project tracking ID                 | FMIS XML Schema             |
+| `<CFDA>`                 | Catalog of Federal Domestic Assistance   | FMIS “60” report validation |
+| `<ProgramCode>`          | Matches NHPP, STBG, CMAQ, etc.           | M60 Table + FMIS “37” logic |
+| `<ImprovementType>`      | Defines work type (e.g., bridge, safety) | AASHTO-aligned compliance   |
+| `<PercentFunds>`         | Specifies cost matching ratios           | 2 CFR 200, FHWA caps        |
+| `<DetailStatus>`         | Status at the line-item level            | FMIS XML template           |
+| `<Expenditure>`          | Amounts per program code/phase           | FMIS Phase Coding Manual    |
+
+These elements, validated in real-time through EDS, ensure all outgoing data meets FHWA’s XML formatting, code validations, and budget structuring guidelines.
+
+**FMIS (Federal Highway’s Financial Management Information System)**
+
+* **Purpose**: Primary system for federal funding, compliance, and final approvals.
+* **EDS Interaction**:
+
+  * **Push**: Approved PAR data in standardized XML/JSON
+  * **Pull**: Real-time feedback on acceptance, rejections, or additional data requests
+  * **Validation**: EDS cross-checks program codes and budget amounts with FMIS “60” or “37” reports prior to final submission
+
+---
+
+## 6. Next Steps & Key Questions for Federal Highway
+
+### 6.1 Next Steps
+
+* **Technical Coordination**:
+
+  * Review FHWA’s API endpoints (or data exchange protocols) for direct FMIS integration.
+  * Align EDS data structures (XML/JSON) with FHWA’s validated schemas.
+
+* **Pilot Testing**:
+
+  * Run a small batch of PARs in a sandbox environment to confirm end-to-end data flow and validations.
+
+* **Continuous Feedback**:
+
+  * Establish regular cadence (monthly or quarterly) with FHWA for any updates to compliance rules or schemas.
+
+---
+
+### 6.2 Questions for Federal Highway
+
+1. **API & Environment**
+
+   * Is there a sandbox or test environment for submission testing?
+   * Which authentication model is required (OAuth, certificates, etc.)?
+
+2. **Data Validation Rules**
+
+   * Are updated reference tables (like M60) available for querying program codes before submission?
+   * What are the most common errors or mismatch fields that lead to rejections in FMIS?
+
+3. **Rate Limits & Throughput**
+
+   * Are there limits on daily/hourly submissions?
+   * Is batching recommended over real-time calls for large funding requests?
+
+4. **Error Handling & Response Codes**
+
+   * How are validation errors or rejections returned (HTTP codes, error messages)?
+   * Is there a webhook or callback for real-time status updates?
+
+5. **Security & Governance**
+
+   * Are there additional federal security mandates required (e.g., IP whitelisting, FedRAMP, FISMA tiers)?
+   * Do DDOT user roles need to be mapped to specific FHWA roles for data acceptance?
+
+---
+
+**Conclusion & Recommendation**
+The EDS/ePAR system satisfies all FHWA compliance, security, and technical integration requirements without needing direct contractor access to FMIS. It provides states with ownership of workflows while ensuring validated, XML-based data exchanges with FHWA systems. Alignment with the FMIS 5 addendum and FHWA coding structures confirms the system is feasible, secure, and ready for rollout across jurisdictions.
+
+---
+
+Do you also want me to **combine this with the governance framework text** so you have a single, consolidated reference document for FHWA and DDOT compliance? That could make it easier to maintain and present.

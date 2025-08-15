@@ -1,0 +1,28 @@
+# This GitHub Actions workflow runs checks from reuseable workflow for pull requests.
+name: PR Checks
+on:
+  pull_request:
+    branches: ["main", "dev"]
+    types: [opened, reopened, synchronize]
+  
+  workflow_dispatch:
+
+permissions: 
+  id-token: write
+  contents: read
+  actions: read
+
+jobs:
+  claude-feedback-dev:
+    if: github.event.pull_request.base.ref == 'dev'
+    uses: AutoBridgeSystems/infra/.github/workflows/pr-checks.yml@dev
+    secrets:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+  
+  claude-feedback-main:
+    if: github.event.pull_request.base.ref == 'main'
+    uses: AutoBridgeSystems/infra/.github/workflows/pr-checks.yml@main
+    secrets:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+
+          
