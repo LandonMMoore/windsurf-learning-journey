@@ -1,8 +1,9 @@
 # EDS COMPREHENSIVE REQUIREMENTS & USER STORIES
+*Generalized Version - Contextual Comments for Requirements Understanding*
 
 *Consolidated Document - All Functional Requirements and User Stories*  
 *Date: August 15, 2025*  
-*Version: 2.0 - Stakeholder Feedback Integrated*
+*Version: 2.0 - Generalized for Implementation Teams*
 
 ---
 
@@ -57,27 +58,27 @@ System Updates → Notifications → Archive
 ## 🚨 **CRITICAL AUTOMATION OPPORTUNITIES**
 
 ### **1. ProTrack+ Submission Automation**
-- **Current**: Manual submission from EDS to ProTrack+ after internal approval
+- **Current State**: Manual submission from EDS to ProTrack+ after internal approval
 - **Solution**: Automated API submission to ProTrack+ with status tracking
 
 ### **2. FMIS Integration Automation (Federal Projects Only)**
-- **Current**: "They type in all the information from the PAR into FMIS"
+- **Current State**: Manual data entry from PAR to FMIS system creates inefficiency and error risk
 - **Solution**: XML generation, automated data entry, status monitoring
-- **Trigger**: Only activated when ProTrack+ completion AND federal funding detected
+- **Trigger Condition**: Only activated when ProTrack+ completion AND federal funding detected
 
 ### **3. Signature Collection Automation**
-- **Stakeholder Request**: "I'm hoping that EDS can trigger that [signature emails]"
-- **Current**: Manual email creation and tracking for 6 signatures
+- **Business Need**: Automated signature workflow requested to eliminate manual email management
+- **Current State**: Manual email creation and tracking for 6 signatures creates bottlenecks
 - **Solution**: Automated email workflow with status tracking
 
 ### **4. FMIS Status Monitoring**
-- **Current**: "We have to go in there and check to see if it's done manually"
-- **Gap**: "We don't get an email stating that it's done"
+- **Current State**: Manual checking of FMIS system for completion status without notifications
+- **Business Gap**: No automated notification system for federal approval completion
 - **Solution**: Automated FMIS polling and notifications
 
 ### **5. DIFS Integration**
-- **Current**: "If the budget analyst does not put it in DIFS, it doesn't go in DIFS period"
-- **Manual Process**: "They have to type everything on that PAR into DIFS"
+- **Current State**: Manual data entry dependency - no automation means no DIFS updates
+- **Manual Process**: Complete re-typing of PAR information into DIFS system
 - **Solution**: API integration for automated updates
 
 ---
@@ -105,11 +106,11 @@ System Updates → Notifications → Archive
 **I want to** create a new PAR for an existing project  
 **So that** I can initiate the budget reallocation or project modification process
 
-**Note**: PM and Engineer roles are interchangeable in DDOT - both are part of RAD team
+**Context**: PM and Engineer roles are functionally equivalent in DDOT organizational structure - both operate under RAD team umbrella
 
 **Acceptance Criteria:**
 - Select project from DIFS-synced project list
-- Choose PAR type (Federal, Local Capital, FMIS)
+- Choose PAR type (Federal, Local Capital)
 - Auto-populate project details from DIFS cache
 - Save PAR in draft status
 - Validate required fields before submission
@@ -147,6 +148,8 @@ System Updates → Notifications → Archive
 **I want** EDS to automatically submit approved PARs to ProTrack+  
 **So that** I don't have to manually transfer PAR data to ProTrack+
 
+**Context**: Current process requires manual submission from EDS to ProTrack+ after internal approval, creating workflow delays
+
 **Acceptance Criteria:**
 - Automatically submit PAR data to ProTrack+ after EDS internal approval
 - Map EDS PAR fields to ProTrack+ required fields
@@ -164,6 +167,8 @@ System Updates → Notifications → Archive
 **As a** System Administrator  
 **I want** EDS to be notified when ProTrack+ processing is complete  
 **So that** EDS can automatically proceed to FMIS steps for federal projects
+
+**Context**: System needs to detect ProTrack+ completion and conditionally trigger FMIS workflow based on funding type
 
 **Acceptance Criteria:**
 - Receive webhook notifications from ProTrack+ on completion
@@ -183,7 +188,7 @@ System Updates → Notifications → Archive
 **I want** EDS to automatically generate and submit PAR data to FMIS  
 **So that** I don't have to manually type all information into FMIS
 
-**Current Manual Process**: "They type in all the information from the PAR into FMIS"
+**Context**: Current process requires complete manual data transcription from PAR to FMIS, creating inefficiency and error potential
 **Trigger Condition**: Only activated after ProTrack+ completion AND federal funding detected
 
 **Acceptance Criteria:**
@@ -206,7 +211,7 @@ System Updates → Notifications → Archive
 **I want** EDS to automatically trigger signature request emails  
 **So that** I don't have to manually create and track signature emails
 
-**Stakeholder Request**: "I'm hoping that EDS can trigger that [signature emails]"
+**Context**: Business requirement for automated signature workflow to eliminate manual email management overhead
 
 **Acceptance Criteria:**
 - Automatically generate signature request emails
@@ -226,8 +231,8 @@ System Updates → Notifications → Archive
 **I want** EDS to automatically monitor FMIS for federal approval status  
 **So that** I don't have to manually check FMIS for completion
 
-**Current Manual Process**: "We have to go in there and check to see if it's done manually"
-**Current Gap**: "We don't get an email stating that it's done"
+**Context**: Current process requires manual FMIS system checking without automated completion notifications
+**Business Gap**: No notification system exists for federal approval completion status
 
 **Acceptance Criteria:**
 - Poll FMIS system for PAR approval status
@@ -247,8 +252,8 @@ System Updates → Notifications → Archive
 **I want** EDS to automatically update DIFS with approved PAR data  
 **So that** I don't have to manually type PAR information into DIFS
 
-**Current Manual Process**: "If the budget analyst does not put it in DIFS, it doesn't go in DIFS period"
-**Manual Reality**: "They have to type everything on that PAR into DIFS"
+**Context**: Current dependency on manual data entry - without analyst input, DIFS updates don't occur
+**Manual Reality**: Complete re-transcription of PAR data into DIFS system required
 
 **Acceptance Criteria:**
 - Automatically submit PAR data to DIFS post-FHWA approval
@@ -383,7 +388,6 @@ System Updates → Notifications → Archive
 **Acceptance Criteria:**
 - Receive webhook notifications from SharePoint
 - Run data synchronization on scheduled intervals
-- Update NICRA rates and fund availability data
 - Handle sync failures gracefully
 - Validate data quality after synchronization
 
@@ -452,24 +456,21 @@ System Updates → Notifications → Archive
 
 ## 🚀 **IMPLEMENTATION PRIORITIES**
 
-### **Phase 1 (30 days): Critical Automation**
+### **Phase 1: Critical Automation**
 1. FMIS XML generation and automated data entry
 2. Signature workflow automation with email triggers
 3. FMIS status monitoring and notifications
 4. RAD team workflow optimization
 
-### **Phase 2 (60 days): Integration Enhancement**
+### **Phase 2: Integration Enhancement**
 1. DIFS API integration for automated updates
 2. Enhanced ProTrack+ bidirectional sync
 3. Real-time dashboard improvements
 4. Advanced audit logging
 
-### **Phase 3 (90 days): Advanced Features**
+### **Phase 3: Advanced Features**
 1. AI-powered report generation enhancements
 2. Mobile responsiveness optimization
 3. Performance tuning and scaling
 4. Advanced analytics capabilities
 
----
-
-This consolidated document preserves all information from both functional requirements and user stories while organizing it into a comprehensive, stakeholder-ready format that reflects the corrected understanding of DDOT processes and critical automation opportunities.
